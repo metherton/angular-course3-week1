@@ -28,20 +28,20 @@
 <body>
 
     <div class="container">
-        <div class="row row-content" ng-controller="DishDetailController as dishDetailCtrl">
+        <div class="row row-content" ng-controller="DishDetailController">
             <div class="col-xs-12">
                 <div class="media">
                     <div class="media-left media-middle">
                         <a href="#">
                             <img class="media-object img-thumbnail"
-                                 ng-src={{dishDetailCtrl.dish.image}} alt="Uthappizza">
+                                 ng-src={{dish.image}} alt="Uthappizza">
                         </a>
                     </div>
                     <div class="media-body">
-                        <h2 class="media-heading">{{dishDetailCtrl.dish.name}}
-                            <span class="label label-danger">{{dishDetailCtrl.dish.label}}</span>
-                            <span class="badge">{{dishDetailCtrl.dish.price | currency}}</span></h2>
-                        <p>{{dishDetailCtrl.dish.description}}</p>
+                        <h2 class="media-heading">{{dish.name}}
+                            <span class="label label-danger">{{dish.label}}</span>
+                            <span class="badge">{{dish.price | currency}}</span></h2>
+                        <p>{{dish.description}}</p>
                     </div>
                 </div>
             </div>
@@ -51,10 +51,10 @@
                         <h4>Customer Comments</h4>
                     </div>
                     <div class="col-xs-6">
-                        <p style="margin-top: 8px">Sort By:&nbsp;<input type="text" ng-model="dishDetailCtrl.sortBy"></p>
+                        <p style="margin-top: 8px">Sort By:&nbsp;<input type="text" ng-model="sortBy"></p>
                     </div>
                 </div>
-                <blockquote ng-repeat="comment in dishDetailCtrl.dish.comments | orderBy: dishDetailCtrl.sortBy">
+                <blockquote ng-repeat="comment in dish.comments | orderBy: sortBy">
                     <p>{{comment.rating}} stars</p>
                     <p>{{comment.comment}}</p>
                     <footer>{{comment.author}}, {{comment.date | date}}</footer>
