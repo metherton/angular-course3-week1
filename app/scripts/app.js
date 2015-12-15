@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('confusionApp', []);
+angular.module('confusionApp', ['ngRoute']);
