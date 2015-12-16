@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('confusionApp', ['ui.router'])
-.config(function($stateProvider, $urlRouterProvider) {
+
+    .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
-        
-            // route for the home page
+        // route for the home page
             .state('app', {
                 url:'/',
                 views: {
@@ -12,34 +12,31 @@ angular.module('confusionApp', ['ui.router'])
                         templateUrl : 'views/header.html',
                     },
                     'content': {
-                        templateUrl : 'views/home.html',
+                        template : '<h1>To be Completed</h1>',
                         controller  : 'IndexController'
                     },
                     'footer': {
                         templateUrl : 'views/footer.html',
                     }
                 }
-
             })
-        
             // route for the aboutus page
             .state('app.aboutus', {
                 url:'aboutus',
                 views: {
                     'content@': {
-                        templateUrl : 'views/aboutus.html',
-                        controller  : 'AboutController'                  
+                        template: '<h1>To be Completed</h1>',
+                        controller  : 'AboutController'
                     }
                 }
             })
-        
             // route for the contactus page
             .state('app.contactus', {
                 url:'contactus',
                 views: {
                     'content@': {
                         templateUrl : 'views/contactus.html',
-                        controller  : 'ContactController'                  
+                        controller  : 'ContactController'
                     }
                 }
             })
@@ -62,10 +59,9 @@ angular.module('confusionApp', ['ui.router'])
                     'content@': {
                         templateUrl : 'views/dishdetail.html',
                         controller  : 'DishDetailController'
-                   }
+                    }
                 }
             });
-    
         $urlRouterProvider.otherwise('/');
     })
 ;
