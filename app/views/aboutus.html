@@ -57,9 +57,9 @@
                <ul class="media-list">
                    <li class="media" ng-repeat="leader in leaders">
                        <div class="media-left media-middle">
-                           <a ui-sref="app.dishdetails({id: dish._id})">
+                           <a ui-sref="app.aboutus">
                                <img class="media-object img-thumbnail"
-                                    ng-src={{leader.image}} alt="Uthappizza">
+                                    ng-src={{leader.image}} alt="{{leader.name}}">
                            </a>
                        </div>
                        <div class="media-body">
