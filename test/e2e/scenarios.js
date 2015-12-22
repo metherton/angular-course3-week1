@@ -38,7 +38,7 @@ describe('conFusion App E2E Testing', function() {
         });
 
         it('should show the first comment author as', function() {
-            element(by.model('orderText')).sendKeys('author');
+            element(by.model('sortBy')).sendKeys('author');
             expect(element.all(by.repeater('comment in dish.comments'))
                 .count()).toEqual(5);
             var author = element.all(by.repeater('comment in dish.comments'))
