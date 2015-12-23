@@ -18,6 +18,11 @@ describe('conFusion App E2E Testing', function() {
             expect(browser.getTitle()).
             toEqual('Ristorante Con Fusion');
         });
+
+        it('should have a promotion', function() {
+            var promotion = element(by.id("promotion"));
+            expect(promotion.getText()).toContain("Weekend Grand Buffet");
+        });
     });
 
     describe('menu 0 item', function() {
