@@ -125,7 +125,6 @@ angular.module('confusionApp')
                     }
                 );
 
-            //$scope.promotion = menuFactory.getPromotion(0);
             $scope.promotion = menuFactory.getPromotions().get({id:0})
                 .$promise.then(
                     function(response){
@@ -133,7 +132,13 @@ angular.module('confusionApp')
                     }
                 );
 
-            $scope.leader = corporateFactory.getLeader(3);
+            $scope.leader = corporateFactory.getLeaders().get({id:3})
+                .$promise.then(
+                    function(response){
+                        $scope.leader = response;
+                    }
+                );
+
         }])
 
         .controller('AboutController', ['$scope', 'corporateFactory', function($scope, corporateFactory) {

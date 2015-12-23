@@ -22,7 +22,6 @@ describe('Controller: IndexController', function() {
                 "comments":[{}]
             });
 
-
         $httpBackend.expectGET("http://localhost:3000/promotions/0").respond(
                 {
                     "id": 0,
@@ -32,6 +31,17 @@ describe('Controller: IndexController', function() {
                     "price": "19.99",
                     "description": "Featuring mouthwatering combinations with a choice of five different salads, six enticing appetizers, six main entrees and five choicest desserts. Free flowingbubbly and soft drinks. All for just $19.99 per person "
                 }
+        );
+
+        $httpBackend.expectGET("http://localhost:3000/leadership/3").respond(
+            {
+                "id": 0,
+                "name": "Peter Pan",
+                "image": "images/alberto.png",
+                "designation": "Chief Epicurious Officer",
+                "abbr": "CEO",
+                "description": "Our CEO, Peter, credits his hardworking East Asian immigrant parents who undertook the arduous journey to the shores of America with the intention of giving their children the best future. His mother's wizardy in the kitchen whipping up the tastiest dishes with whatever is available inexpensively at the supermarket, was his first inspiration to create the fusion cuisines for which The Frying Pan became well known. He brings his zeal for fusion cuisines to this restaurant, pioneering cross-cultural culinary connections."
+            }
         );
 
         scope = $rootScope.$new();
@@ -45,6 +55,10 @@ describe('Controller: IndexController', function() {
 
     it('should create promotions with 1 promotion fetched from xhr', function() {
        expect(scope.promotion).toBeDefined();
+    });
+
+    it('should create leadership with 1 leader fetched from xhr', function() {
+        expect(scope.leader).toBeDefined();
     });
 
 });
