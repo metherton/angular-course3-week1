@@ -125,24 +125,47 @@ angular.module('confusionApp')
                     }
                 );
 
+            $scope.showPromotion = false;
+            $scope.messagePromotion = "Loading ...";
             $scope.promotion = menuFactory.getPromotions().get({id:0})
                 .$promise.then(
                     function(response){
                         $scope.promotion = response;
+                        $scope.showPromotion = true;
+                    },
+                    function(response) {
+                        $scope.messagePromotion = "Error: "+response.status + " " + response.statusText;
                     }
                 );
 
+            $scope.showLeader = false;
+            $scope.messageLeader = "Loading ...";
             $scope.leader = corporateFactory.getLeaders().get({id:3})
                 .$promise.then(
                     function(response){
                         $scope.leader = response;
+                        $scope.showLeader = true;
+                    },
+                    function(response) {
+                        $scope.messageLeader = "Error: "+response.status + " " + response.statusText;
                     }
                 );
 
         }])
 
         .controller('AboutController', ['$scope', 'corporateFactory', function($scope, corporateFactory) {
-            $scope.leaders = corporateFactory.getLeaders();
+            $scope.showLeaders = false;
+            $scope.messageLeaders = "Loading ...";
+            $scope.leaders = corporateFactory.getLeaders().query()
+                .$promise.then(
+                    function(response){
+                        $scope.leaders = response;
+                        $scope.showLeaders = true;
+                    },
+                    function(response) {
+                        $scope.messageLeaders = "Error: "+response.status + " " + response.statusText;
+                    }
+                );
         }])
 
 
