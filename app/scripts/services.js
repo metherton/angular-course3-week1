@@ -24,4 +24,10 @@ angular.module('confusionApp')
             };
 
             return corpfac;
-        }]);
+        }])
+        .factory('feedbackFactory', ['$resource', 'baseURL', function($resource,baseURL) {
+
+            return $resource(baseURL +"feedback/:id", null);
+        }])
+
+;
