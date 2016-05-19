@@ -83,3 +83,18 @@ gulp.task('browser-sync', ['default'], function () {
     // Watch any files in dist/, reload on change
     gulp.watch(['dist/**']).on('change', browserSync.reload);
 });
+
+
+var ngConstant = require('gulp-ng-constant');
+
+gulp.task('config', function () {
+    gulp.src('app/config.json')
+        .pipe(ngConstant({
+            name: 'my.module.config',
+            deps: ['ngAnimate'],
+            constants: { myPropCnt: 'hola!' },
+            wrap: 'amd',
+        }))
+        // Writes config.js to dist/ folder
+        .pipe(gulp.dest('dist'));
+});

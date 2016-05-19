@@ -3,7 +3,9 @@
 angular.module('confusionApp')
 
         .controller('MenuController', ['$scope', 'menuFactory', function($scope, menuFactory) {
-            
+
+            console.log('++++++++++++++++++++++++++ meu controller');
+
             $scope.tab = 1;
             $scope.filtText = '';
             $scope.showDetails = false;

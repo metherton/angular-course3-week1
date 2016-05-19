@@ -10,7 +10,7 @@ describe('Controller: AboutController', function() {
 
         $httpBackend = _$httpBackend_;
 
-        $httpBackend.expectGET("http://localhost:3000/leadership").respond(
+        $httpBackend.expectGET("http://localhost:3000/leadership",{Accept:"application/json, text/plain, */*"}).respond(
             [
                 {
                     "id": 0,
@@ -59,5 +59,6 @@ describe('Controller: AboutController', function() {
         expect(scope.leaders).toBeDefined();
         expect(scope.leaders.length).toBe(4);
     });
+
 
 });
