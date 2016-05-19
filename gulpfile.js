@@ -12,7 +12,8 @@ var gulp = require('gulp'),
     changed = require('gulp-changed'),
     rev = require('gulp-rev'),
     browserSync = require('browser-sync'),
-    del = require('del');
+    del = require('del'),
+    args = require('yargs').argv;
 
 var ngannotate = require('gulp-ng-annotate');
 
@@ -87,14 +88,13 @@ gulp.task('browser-sync', ['default'], function () {
 
 var ngConstant = require('gulp-ng-constant');
 
-gulp.task('config', function () {
-    gulp.src('app/config.json')
-        .pipe(ngConstant({
-            name: 'my.module.config',
-            deps: ['ngAnimate'],
-            constants: { myPropCnt: 'hola!' },
-            wrap: 'amd',
-        }))
-        // Writes config.js to dist/ folder
+gulp.task('constants', function () {
+    var env = args.env || 'test';
+    var myConfig = require('./app/config.json');
+    var envConfig = myConfig[env];
+    return ngConstant({
+        constants: envConfig,
+        stream: true
+    })
         .pipe(gulp.dest('dist'));
 });
